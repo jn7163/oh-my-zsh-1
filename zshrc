@@ -63,11 +63,10 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+export EDITOR=vim
+export SVN_EDITOR=vim
 # else
 #   export EDITOR='mvim'
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -87,6 +86,7 @@ fi
 # auto update oh-my-zsh
 DISABLE_UPDATE_PROMPT=true
 
+# 如果home/end键没问题,请不要设置下面的参数
 # key bindings
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line

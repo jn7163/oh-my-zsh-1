@@ -15,7 +15,7 @@ export LC_ALL="zh_CN.UTF-8"
 # export LC_ALL=$(locale -uU)
 
 # Uncomment this to disable daily auto-update & proxy checks on startup (not recommended!)
-# export DISABLE_CHECK_ON_STARTUP="true"
+export DISABLE_CHECK_ON_STARTUP="true"
 
 # Uncomment to increase/decrease the check connection timeout
 # export CHECK_TIMEOUT_IN_SECS=4
@@ -40,7 +40,7 @@ proxy=http://127.0.0.1:1080
 export http_proxy=$proxy
 export https_proxy=$proxy
 export ftp_proxy=$proxy
-export no_proxy=localhost,10.0.0.0,172.16.0.0,192.168.0.0,192.168.255.0
+export no_proxy=localhost
 
 export USER_AGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36"
 
