@@ -84,9 +84,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-DISABLE_UPDATE_PROMPT=true
-export EDITOR=vim
-export SVNEDITOR=vim
 
 # key bindings
 bindkey "\e[1~" beginning-of-line
@@ -132,16 +129,28 @@ bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
 
-alias gcc='gcc -std=gnu99 -Wall -Wextra'
-alias gdb='gdb -q'
-alias cgdb='cgdb -q'
-alias catconf='egrep -v "^\s*$|^\s*#"'
-alias drop_cache='sync && sleep 2 && echo 3 > /proc/sys/vm/drop_caches'
+DISABLE_UPDATE_PROMPT=true
+
+if [[ $TERM == 'xterm' ]]; then
+    export TERM=xterm-256color
+fi
 
 export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
 export no_proxy=localhost
 
+export HISTSIZE=10000
+export HISTCONTROL=ignoredups
+
+export EDITOR=vim
+export SVNEDITOR=vim
+
+alias gcc='gcc -std=gnu99 -Wall -Wextra'
+alias gdb='gdb -q'
+alias cgdb='cgdb -q'
+
+alias catconf='egrep -v "^\s*$|^\s*#"'
+alias drop_cache='sync && sleep 2 && echo 3 > /proc/sys/vm/drop_caches'
 alias pp='ps -eo user,pid,ppid,lwp,nlwp,%cpu,%mem,stat,cmd'
 
 alias rescan_disk_1='for i in `ls /sys/class/scsi_host/`; do echo "- - -" > /sys/class/scsi_host/$i/scan; done'
