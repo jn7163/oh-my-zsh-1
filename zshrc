@@ -42,6 +42,7 @@ ZSH_THEME="ys"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
 HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -63,10 +64,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR=vim
-export SVN_EDITOR=vim
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -82,11 +84,10 @@ export SVN_EDITOR=vim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# auto update oh-my-zsh
 DISABLE_UPDATE_PROMPT=true
+export EDITOR=vim
+export SVNEDITOR=vim
 
-# 如果home/end键没问题,请不要设置下面的参数
 # key bindings
 bindkey "\e[1~" beginning-of-line
 bindkey "\e[4~" end-of-line
@@ -130,3 +131,19 @@ bindkey -s "^[Ol" "+"
 bindkey -s "^[Om" "-"
 bindkey -s "^[Oj" "*"
 bindkey -s "^[Oo" "/"
+
+alias gcc='gcc -std=gnu99 -Wall -Wextra'
+alias gdb='gdb -q'
+alias cgdb='cgdb -q'
+alias catconf='egrep -v "^\s*$|^\s*#"'
+alias drop_cache='sync && sleep 2 && echo 3 > /proc/sys/vm/drop_caches'
+
+export http_proxy=http://127.0.0.1:8118
+export https_proxy=http://127.0.0.1:8118
+export no_proxy=localhost
+
+alias pp='ps -eo user,pid,ppid,lwp,nlwp,%cpu,%mem,stat,cmd'
+
+alias rescan_disk_1='for i in `ls /sys/class/scsi_host/`; do echo "- - -" > /sys/class/scsi_host/$i/scan; done'
+alias rescan_disk_2='for i in `ls /sys/class/scsi_device/`; do echo "1" > /sys/class/scsi_device/$i/device/rescan; done'
+alias rescan_disk='rescan_disk_1 && rescan_disk_2'
