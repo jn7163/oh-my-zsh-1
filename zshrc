@@ -145,7 +145,8 @@ export HISTCONTROL=ignoredups
 export EDITOR=vim
 export SVNEDITOR=vim
 
-alias gcc='gcc -std=gnu99 -Wall -Wextra'
+alias gcc='gcc -std=c99 -Wall -Wextra'
+alias g++='g++ -std=c++11 -Wall -Wextra'
 alias gdb='gdb -q'
 alias cgdb='cgdb -q'
 
